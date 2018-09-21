@@ -22,7 +22,7 @@ def register():
 
         flash('You have successfully registered. You may now login!')
 
-        mail_message("Welcome to Blogpost","email/welcome_user",user.email,user=user)
+        mail_message("Welcome to Twing","email/welcome_user",user.email,user=user)
 
         title = "New Account"
         return redirect(url_for('auth.login'))
@@ -62,7 +62,7 @@ def login():
 
         flash('Invalid username or Password')
 
-    title = "Blogpost login"
+    title = "Twing login"
 
     # load login template
 
