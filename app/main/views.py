@@ -160,22 +160,23 @@ def data():
     return jsonify({'twing': data_list})
 
 
-# @main.route('/analytics', methods=['GET', 'POST'])
-# @login_required
-# def analytics():
-#     form = SearchForm()
-#     print(form.validate_on_submit())
-#     data_list = []
-#     if form.validate_on_submit():
-#         os.remove('search.csv')
-#         os.remove('datam.csv')
-#         search = form.search.data
-#         Listener.runTweets(search)
-#     # print('\n\n\n\n\n\n\n  done ')
-#     reader = csv.reader(open('datam.csv', 'r'))
-#     for row in reader:
-#         data_list.append(row)
-#         jsonify({'twing': data_list})
-#         return render_template('graph.html', form=form)
-#     return render_template('graph.html', form=form)
+@main.route('/analytics', methods=['GET', 'POST'])
+@login_required
+def analytics():
+    form = SearchForm()
+    print(form.validate_on_submit())
+    data_list = []
+    if form.validate_on_submit():
+        os.remove('search.csv')
+        os.remove('datam.csv')
+        search = form.search.data
+        Listener.runTweets(search)
 
+    reader = csv.reader(open('datam.csv', 'r'))
+    for row in reader:
+        data_list.append(row)
+        jsonify({'twing': data_list})
+
+        title= 'Analytics'
+        return render_template('graph.html', form=form, title=title)
+    return render_template('graph.html', form=form)

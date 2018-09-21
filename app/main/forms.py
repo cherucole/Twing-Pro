@@ -7,9 +7,5 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class SearchForm(FlaskForm):
-    search = StringField('Search Topic')
+    search = StringField('Search Twitter')
     submit = SubmitField('search')
-
-
-
-
