@@ -22,7 +22,7 @@
   <img src="../static/photos/tWingtext.png" style="height:70%; " alt="">
 
 </div>
-<div class="nav" style="background-color:black;">
+<div class="nav" style="background-color:black;" id="navbar">
   <div class="container">
     <div class="nav">
       <div class="home d-flex align-items-center ml-5">
@@ -33,7 +33,7 @@
           <li>
             <a class="nav-link" href="{{url_for('main.about') }}">About</a>
           </li>
-          <li><a class="nav-link" href="{{ url_for('main.plot') }}">Plot</a></li>
+          <li><a class="nav-link" href="{{ url_for('main.analytics') }}">Analytics</a></li>
           {% if current_user.is_authenticated %} {% if current_user.is_admin %}
           <li><a class="nav-link" href="{{ url_for('main.admin_dashboard') }}">Analytics</a></li>
           <li><a class="nav-link" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
@@ -99,6 +99,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ="
         crossorigin="anonymous"></script>
     <script src="../static/js/victor.js"></script>
+
+    <script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+    </script>
 </body>
 
 </html>

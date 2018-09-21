@@ -27,11 +27,11 @@
 
   </div>
 
-  <div class="nav nav-btm">
+  <div class="nav" style="background-color:black;" id="navbar">
     <div class="container">
       <div class="nav">
         <div class="home d-flex align-items-center ml-5">
-          <h1 class="text-light mb-0 pl-0">Home</h1>
+          <h1 class="text-light mb-0 pl-0"><a class="active" href="javascript:void(0)">Home</a></h1>
         </div>
         <div class="nav-content ml-auto mr-0 d-flex align-items-center">
           <ul class="nav-ul d-flex align-items-center mb-0">
@@ -168,43 +168,10 @@
           <div class="col-12">
             <hr style="color:white;">
             <h5 style="color:white;">&copy; Twing-IT</h5>
-
-            <div class="search" style="width: 50%;">
-              <!--<form action="" method="POST">-->
-              <!--{{ form.csrf_token }}-->
-              <!--<legend>Search twitter</legend>-->
-              <!--<fieldset>-->
-              <!--<div class="form-group d-inline-flex">-->
-              <!--{{ form.search(class='form-control') }}-->
-              <!--{{ form.submit(class='btn btn-sm btn-outline-success') }}-->
-              <!--</div>-->
-              <!--</fieldset>-->
-              <!--</form>-->
-              <!---->
-              <!---->
-
-              {{wtf.quick_form(form)}}
-            </div>
+  </div>
 
 
-            <label id="search" for="">{{ search }}</label>
-            <div class="container">
-              <canvas id="myChart"></canvas>
-            </div>
 
-            <div class="container">
-              <ul>
-                <li class="tweet"></li>
-              </ul>
-            </div>
-
-
-            <div class="container">
-
-            </div>
-
-
-          </div>
         </div>
 
 
@@ -219,7 +186,20 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
   <script src="../static/js/victor.js"></script>
+  <script>
+  window.onscroll = function() {myFunction()};
 
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+  </script>
 </body>
 
 </html>
