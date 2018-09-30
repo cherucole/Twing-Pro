@@ -58,38 +58,97 @@
 <body>
 <br>
 <br>
-    <div class="search" style="width: 50%;">
-        <!--<form action="" method="POST">-->
-            <!--{{ form.csrf_token }}-->
-            <!--<legend>Search twitter</legend>-->
-            <!--<fieldset>-->
-                <!--<div class="form-group d-inline-flex">-->
-                    <!--{{ form.search(class='form-control') }}-->
-                    <!--{{ form.submit(class='btn btn-sm btn-outline-success') }}-->
-                <!--</div>-->
-            <!--</fieldset>-->
-        <!--</form>-->
-        <!---->
-        <!---->
-
-        {{wtf.quick_form(form)}}
+    <div class="search">
+        <form action="" method="POST">
+            {{ form.csrf_token }}
+            <legend>Search twitter</legend>
+            <fieldset>
+                <div class="form-group d-inline-flex">
+                    {{ form.search(class='form-control') }}
+                    {{ form.submit(class='btn btn-sm btn-outline-success ml-2') }}
+                </div>
+            </fieldset>
+        </form>
     </div>
 
-
     <label id="search" for="">{{ search }}</label>
+    <select class="btn" id="select">
+        <option class="btn" value="line">Line</option>
+        <option class="btn" value="horizontalbar">Horizontalbar</option>
+        <option class="btn" value="pie">pie</option>
+        <option class="btn" value="radar">radar</option>
+        <option class="btn" value="polarArea">polarArea</option>
+        <option class="btn" value="bar">bar</option>
+    </select>
+    <button class="btn" id="btn btn-sm">change chart</button>
+
+
+    <div class="jumbotron my-3" id="waiting">
+        <h1>Loading......</h1>
+    </div>
 
     <div class="container">
         <canvas id="myChart"></canvas>
     </div>
 
-    <div class="container">
-        <ul>
-            <li class="tweet"></li>
+    <div class="container px-5 d-none" id="tweetsBox">
+        <ul id="tweets">
+            <li class="tweet-item">
+                <span id="tweet0"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet1"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet2"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet3"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet4"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet5"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet6"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet7"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet8"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet9"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet10"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet11"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet12"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet13"></span>
+            </li>
+            <li class="tweet-item">
+                <span id="tweet14"></span>
+            </li>
         </ul>
     </div>
 
-    <div class="container">
-        <canvas id="chartTwo"></canvas>
+    <div class="d-flex row m-0 p-0">
+        <div class="col-6">
+            <canvas id="myChart2"></canvas>
+        </div>
+
+        <div class="col-6">
+            <canvas id="myChart3"></canvas>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js" integrity="sha256-nAGlRh0I/Bl11HX9TGce1M8dg9bnxROCb425L4fT848="
@@ -98,7 +157,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ="
         crossorigin="anonymous"></script>
-    <script src="../static/js/victor.js"></script>
+    <script src="../static/js/script.js"></script>
 
     <script>
     window.onscroll = function() {myFunction()};
