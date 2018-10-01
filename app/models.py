@@ -110,7 +110,7 @@ class Listener(StreamListener):
         for row in reader:
             writer.writerow(row)
         # now = 0
-        if self.counter >= 50:
+        if self.counter >= 20:
             print('im done')
             return False
         return True
