@@ -27,7 +27,7 @@ class ProdConfig(Config):
 
 
 class TestConfig(Config):
-    # SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://cherucole:cherucole@localhost/twing'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://cherucole:cherucole@localhost/twing'
 
 
 class DevConfig(Config):
