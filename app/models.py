@@ -20,17 +20,11 @@ from flask import Flask, render_template, url_for, jsonify, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 
-
-
-
 consumer_key = 'WRxcgZHq8HOA9AiACeoz7pc61'
 consumer_secret = 'IJnOARqL3baljF5VfMPB4Gy1GmxVLlSv6L4BgJoh3bVDslSQYL'
 
 access_token = '32554005-yIgL0lbl0aWXyJ0E8q61zDF8BpOtVzWwRoZyCDm1n'
 access_token_secret = 'PzknR8jcAmNgG35G0D99BH9qEJfF7n477AxK1kgFDnVWl'
-
-
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -38,15 +32,10 @@ def load_user(user_id):
 
     # Passes in a user id to this function and the function queries
     #  the database and gets a user's id as a response
-
-
-
 f = open('search.csv', 'w+')
 f.close()
 f = open('datam.csv', 'w+')
 f.close()
-
-
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
@@ -57,7 +46,6 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
-    is_admin = db.Column(db.Boolean, default=False)
 
     @property
     def password(self):
