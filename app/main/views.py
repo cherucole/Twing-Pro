@@ -45,7 +45,6 @@ def index():
         data_list.append(row)
         jsonify({'twing': data_list})
 
-
     return render_template('index.html', form=form)
 
 @main.route('/about')
