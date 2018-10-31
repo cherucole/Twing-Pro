@@ -1,181 +1,183 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 <!DOCTYPE html>
 <html lang="en">
+
 <body>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Custom fonts for this template -->
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{url_for('static', filename ='css/styles.css')}}">
-    <title>About Twing IT</title>
+        <!-- Custom fonts for this template -->
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+            rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{url_for('static', filename ='css/styles.css')}}">
+        <title>About Twing IT</title>
 
-  </head>
+    </head>
     <title>Analytics</title>
-</head>
-<div class="top d-flex align-items-center justify-content-center" style="background-color:black;">
-  <img src="../static/photos/tWingtext.png" style="height:70%; " alt="">
+    </head>
+    <div class="top d-flex align-items-center justify-content-center" style="background-color:black;">
+        <img src="../static/photos/tWingtext.png" style="height:70%; " alt="">
 
-</div>
-<div class="nav" style="background-color:black;" id="navbar">
-  <div class="container">
-    <div class="nav">
-      <div class="home d-flex align-items-center ml-5">
-        <h1 class="text-light mb-0"><a href="/">Home</a></h1>
-      </div>
-      <div class="nav-content ml-auto mr-0 d-flex align-items-center">
-        <ul class="nav-ul d-flex align-items-center mb-0">
-          <li>
-            <a class="nav-link" href="{{url_for('main.about') }}">About</a>
-          </li>
-          <li><a class="nav-link" href="{{ url_for('main.analytics') }}">Analytics</a></li>
-          {% if current_user.is_authenticated %} {% if current_user.is_admin %}
-          <li><a class="nav-link" href="{{ url_for('main.admin_dashboard') }}">Analytics</a></li>
-          <li><a class="nav-link" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-          {% else %}
-          <li><a class="nav-link" href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-          {% endif %}
-          <li><a class="nav-link" href="{{url_for('auth.logout')}}">Log out</a></li>
-          <li><a class="nav-link"><i class="fa fa-user"></i> Hi, {{ current_user.username }}!</a></li>
-
-          {% else %}
-          <li><a class="nav-link" href="/">Home</a></li>
-          <li><a class="nav-link" href="{{url_for('auth.register')}}">Register</a></li>
-          <li class="divider"></li>
-          <li><a class="nav-link" href="{{url_for('auth.login')}}">Log in</a></li>
-          {% endif %}
-
-        </ul>
-      </div>
     </div>
-  </div>
-</div>
-<body>
-
-<br>
-<br>
-<div  class="container">
-    <div class="search">
-        <form action="" method="POST">
-            {{ form.csrf_token }}
-            <legend>Search twitter</legend>
-            <fieldset>
-                <div class="form-group d-inline-flex">
-                    {{ form.search(class='form-control') }}
-                    {{ form.submit(class='btn btn-sm btn-outline-success ml-2') }}
+    <div class="nav" style="background-color:black;" id="navbar">
+        <div class="container">
+            <div class="nav">
+                <div class="home d-flex align-items-center ml-5">
+                    <h1 class="text-light mb-0"><a href="/">Home</a></h1>
                 </div>
-            </fieldset>
-        </form>
-    </div>
+                <div class="nav-content ml-auto mr-0 d-flex align-items-center">
+                    <ul class="nav-ul d-flex align-items-center mb-0">
+                        <li>
+                            <a class="nav-link" href="{{url_for('main.about') }}">About</a>
+                        </li>
+                        <li><a class="nav-link" href="{{ url_for('main.analytics') }}">Analytics</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li><a class="nav-link" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+                        <li><a class="nav-link" href="{{url_for('auth.logout')}}">Log out</a></li>
+                        <li><a class="nav-link"><i class="fa fa-user"></i> Hi, {{ current_user.username }}!</a></li>
 
-    <label id="search" for="">{{ search }}</label>
-    <select class="btn" id="select">
-        <option class="btn" value="line">Line</option>
-        <option class="btn" value="horizontalbar">Horizontalbar</option>
-        <option class="btn" value="pie">pie</option>
-        <option class="btn" value="radar">radar</option>
-        <option class="btn" value="polarArea">polarArea</option>
-        <option class="btn" value="bar">bar</option>
-    </select>
-    <button class="btn" id="btn btn-sm">change chart</button>
+                        {% else %}
+                        <li><a class="nav-link" href="/">Home</a></li>
+                        <li><a class="nav-link" href="{{url_for('auth.register')}}">Register</a></li>
+                        <li class="divider"></li>
+                        <li><a class="nav-link" href="{{url_for('auth.login')}}">Log in</a></li>
+                        {% endif %}
 
-
-    <div class="jumbotron my-3" id="waiting">
-        <h1>Loading......</h1>
-    </div>
-
-    <div class="container">
-        <canvas id="myChart"></canvas>
-    </div>
-
-    <div class="container px-5 d-none" id="tweetsBox">
-        <ul id="tweets">
-            <li class="tweet-item">
-                <span id="tweet0"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet1"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet2"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet3"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet4"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet5"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet6"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet7"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet8"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet9"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet10"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet11"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet12"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet13"></span>
-            </li>
-            <li class="tweet-item">
-                <span id="tweet14"></span>
-            </li>
-        </ul>
-    </div>
-
-    <div class="d-flex row m-0 p-0">
-        <div class="col-6">
-            <canvas id="myChart2"></canvas>
-        </div>
-
-        <div class="col-6">
-            <canvas id="myChart3"></canvas>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js" integrity="sha256-nAGlRh0I/Bl11HX9TGce1M8dg9bnxROCb425L4fT848="
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ="
-        crossorigin="anonymous"></script>
-    <script src="../static/js/script.js"></script>
+    <body>
 
-    <script>
-    window.onscroll = function() {myFunction()};
+        <br>
+        <br>
+        <div class="container">
+            <div class="search">
+                <form action="" method="POST">
+                    {{ form.csrf_token }}
+                    <legend>Search twitter</legend>
+                    <fieldset>
+                        <div class="form-group d-inline-flex">
+                            {{ form.search(class='form-control') }}
+                            {{ form.submit(class='btn btn-sm btn-outline-success ml-2') }}
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
 
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+            <label id="search" for="">{{ search }}</label>
+            <select class="btn" id="select">
+                <option class="btn" value="line">Line</option>
+                <option class="btn" value="horizontalbar">Horizontalbar</option>
+                <option class="btn" value="pie">pie</option>
+                <option class="btn" value="radar">radar</option>
+                <option class="btn" value="polarArea">polarArea</option>
+                <option class="btn" value="bar">bar</option>
+            </select>
+            <button class="btn" id="btn btn-sm">change chart</button>
 
-    function myFunction() {
-      if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-      } else {
-        navbar.classList.remove("sticky");
-      }
-    }
-    </script>
-    </div>
-</body>
+
+            <div class="jumbotron my-3" id="waiting">
+                <h1>Loading......</h1>
+            </div>
+
+            <div class="container">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <div class="container px-5 d-none" id="tweetsBox">
+                <ul id="tweets">
+                    <li class="tweet-item">
+                        <span id="tweet0"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet1"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet2"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet3"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet4"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet5"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet6"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet7"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet8"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet9"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet10"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet11"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet12"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet13"></span>
+                    </li>
+                    <li class="tweet-item">
+                        <span id="tweet14"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex row m-0 p-0">
+                <div class="col-6">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="col-6">
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js" integrity="sha256-nAGlRh0I/Bl11HX9TGce1M8dg9bnxROCb425L4fT848="
+                crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ="
+                crossorigin="anonymous"></script>
+            <script src="../static/js/script.js"></script>
+
+            <script>
+                window.onscroll = function () {
+                    myFunction()
+                };
+
+                var navbar = document.getElementById("navbar");
+                var sticky = navbar.offsetTop;
+
+                function myFunction() {
+                    if (window.pageYOffset >= sticky) {
+                        navbar.classList.add("sticky")
+                    } else {
+                        navbar.classList.remove("sticky");
+                    }
+                }
+            </script>
+        </div>
+    </body>
 
 </html>
