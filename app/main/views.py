@@ -45,7 +45,6 @@ def index():
         data_list.append(row)
         jsonify({'twing': data_list})
 
-
     return render_template('index.html', form=form)
 
 @main.route('/about')
@@ -96,9 +95,6 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
-
-
-
 
 @main.route('/dashboard')
 @login_required

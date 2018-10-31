@@ -15,7 +15,6 @@ import csv
 from collections import Counter
 import ast
 
-
 consumer_key = 'WRxcgZHq8HOA9AiACeoz7pc61'
 consumer_secret = 'IJnOARqL3baljF5VfMPB4Gy1GmxVLlSv6L4BgJoh3bVDslSQYL'
 access_token = '32554005-yIgL0lbl0aWXyJ0E8q61zDF8BpOtVzWwRoZyCDm1n'
@@ -39,7 +38,6 @@ def process_tweet(tweet):
 tweets = pd.read_csv("saved_tweets.csv")
 tweets.head()
 
-
 # Extract hashtags and put them in a list
 list_hashtag_strings = [entry for entry in tweets.hashtags]
 list_hashtag_lists = ast.literal_eval(','.join(list_hashtag_strings))
@@ -49,7 +47,6 @@ hashtag_list = [ht.lower() for list_ in list_hashtag_lists for ht in list_]
 counter_hashtags = Counter(hashtag_list)
 counter_hashtags.most_common(20)
 print(counter_hashtags)
-
 
 with open('hashtag.csv', "r") as file:
     writer = csv.writer(file)

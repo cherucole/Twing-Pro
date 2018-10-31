@@ -10,7 +10,6 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 
-
 consumer_key = 'WRxcgZHq8HOA9AiACeoz7pc61'
 consumer_secret = 'IJnOARqL3baljF5VfMPB4Gy1GmxVLlSv6L4BgJoh3bVDslSQYL'
 
@@ -45,7 +44,6 @@ class Listener(StreamListener):
 
     def on_error(self, status):
         print (str(status) + ' error found')
-
 
 l = Listener()
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
