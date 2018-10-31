@@ -16,7 +16,6 @@ def register():
                     password=form.password.data)
 
         # add user to the database
-
         db.session.add(user)
         db.session.commit()
 
@@ -33,11 +32,6 @@ def register():
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-        Handle requests to the /login route
-        Log an employee in through the login form
-        """
-
     login_form = LoginForm()
     if login_form.validate_on_submit():
 
@@ -50,33 +44,20 @@ def login():
 
             login_user(user, login_form.remember.data)
 
-            # redirect to the admin dashboard page after login
-
-            # redirect to the appropriate dashboard page
-
-            # return redirect(url_for('main.dashboard'))
-
             return redirect(request.args.get('next') or url_for('main.index'))
 
         # when login details are incorrect
-
         flash('Invalid username or Password')
 
     title = "Twing login"
 
     # load login template
-
     return render_template('auth/login.html', login_form=login_form, title=title)
 
 
 @auth.route('/logout')
 @login_required
 def logout():
-    """
-        Handle requests to the /logout route
-        Log an employee out through the logout link
-        """
-
     logout_user()
     flash('You have successfully been logged out.')
 
