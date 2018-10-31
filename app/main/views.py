@@ -98,14 +98,6 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))
 
 
-# def check_admin():
-#     """
-#     Prevent non-admins from accessing the page
-#     """
-#     if not current_user.is_admin:
-#         abort(403)
-
-
 # @main.route('/dashboard')
 # @login_required
 # def dashboard():
@@ -113,41 +105,6 @@ def update_pic(uname):
 #     Render the dashboard template on the /dashboard route
 #     """
 #     return render_template('dashboard.html', title="Dashboard")
-
-# @main.route('/admin/dashboard')
-# @login_required
-# def admin_dashboard():
-#     # prevent non-admins from accessing the page
-#     if not current_user.is_admin:
-#         abort(403)
-
-#     return render_template('admin_dashboard.html', title="Dashboard")
-
-@main.route('/plot')
-@login_required
-def plot():
-
-    df = pd.read_csv('redsan1.csv')
-
-    data_table = FF.create_table(df.head())
-    py.plot(data_table, filename='redsan-table')
-
-    trace1 = go.Scatter(
-        x=df['date'], y=df['polarity'],  # Data
-        mode='lines', name='polarity'  # Additional options
-    )
-    # trace2 = go.Scatter(x=df['date'], y=df['polarity'], mode='lines', name='polarity' )
-    trace3 = go.Scatter(x=df['date'], y=df['subjectivity'], mode='lines', name='subjectivity')
-
-    layout = go.Layout(title='Sentiments About Safaricom with a random sample size of 1000 tweets',
-                       plot_bgcolor='rgb(230, 230,230)')
-
-    fig = go.Figure(data=[trace1, trace3], layout=layout)
-
-    # Plot data in the notebook
-    py.plot(fig, filename='simple-plot-from-csv')
-
-    return render_template('plot.html', title="Dashboard")
 
 
 @main.route('/data')
