@@ -134,5 +134,5 @@ def analytics():
         jsonify({'twing': data_list})
 
         title= 'Analytics'
-        return render_template('graph.html', form=form, title=title)
-    return render_template('graph.html', form=form)
+        return render_template('search.html', form=form, title=title)
+    return render_template('search.html', form=form)
