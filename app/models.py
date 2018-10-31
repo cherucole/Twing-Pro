@@ -91,13 +91,11 @@ class Listener(StreamListener):
             writer.writerow(row)
             csvFile.close()
 
-        # if int(datetime.utcnow().strftime('%s'))%10 == 0:
         reader = csv.reader(open('search.csv', 'r'))
-        # reader1 = csv.reader(open('datam.csv', 'rb'))
         writer = csv.writer(open('datam.csv', 'w+'))
         for row in reader:
             writer.writerow(row)
-        # now = 0
+            
         if self.counter >= 20:
             print('im done')
             return False
