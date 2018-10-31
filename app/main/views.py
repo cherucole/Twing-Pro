@@ -36,11 +36,11 @@ def index():
     data_list = []
     if form.validate_on_submit():
         os.remove('search.csv')
-        os.remove('datam.csv')
+        os.remove('data.csv')
         search = form.search.data
         Listener.runTweets(search)
     # print('\n\n\n\n\n\n\n  done ')
-    reader = csv.reader(open('datam.csv', 'r'))
+    reader = csv.reader(open('data.csv', 'r'))
     for row in reader:
         data_list.append(row)
         jsonify({'twing': data_list})
@@ -109,7 +109,7 @@ def update_pic(uname):
 @main.route('/data')
 @login_required
 def data():
-    reader = csv.reader(open('datam.csv', 'r'))
+    reader = csv.reader(open('data.csv', 'r'))
     data_list = []
     for row in reader:
         data_list.append(row)
@@ -124,11 +124,11 @@ def analytics():
     data_list = []
     if form.validate_on_submit():
         os.remove('search.csv')
-        os.remove('datam.csv')
+        os.remove('data.csv')
         search = form.search.data
         Listener.runTweets(search)
 
-    reader = csv.reader(open('datam.csv', 'r'))
+    reader = csv.reader(open('data.csv', 'r'))
     for row in reader:
         data_list.append(row)
         jsonify({'twing': data_list})

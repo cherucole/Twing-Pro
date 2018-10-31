@@ -1,5 +1,5 @@
 from . import db
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
@@ -26,22 +26,25 @@ consumer_secret = 'IJnOARqL3baljF5VfMPB4Gy1GmxVLlSv6L4BgJoh3bVDslSQYL'
 access_token = '32554005-yIgL0lbl0aWXyJ0E8q61zDF8BpOtVzWwRoZyCDm1n'
 access_token_secret = 'PzknR8jcAmNgG35G0D99BH9qEJfF7n477AxK1kgFDnVWl'
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
     # Passes in a user id to this function and the function queries
     #  the database and gets a user's id as a response
 f = open('search.csv', 'w+')
 f.close()
-f = open('datam.csv', 'w+')
+f = open('data.csv', 'w+')
 f.close()
 
-class User(UserMixin,db.Model):
+
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255), index = True)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255), index=True)
     email = db.Column(db.String(255), unique=True, index=True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
@@ -92,10 +95,10 @@ class Listener(StreamListener):
             csvFile.close()
 
         reader = csv.reader(open('search.csv', 'r'))
-        writer = csv.writer(open('datam.csv', 'w+'))
+        writer = csv.writer(open('data.csv', 'w+'))
         for row in reader:
             writer.writerow(row)
-            
+
         if self.counter >= 20:
             print('im done')
             return False
