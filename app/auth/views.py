@@ -1,19 +1,19 @@
-from flask import flash, render_template, request, redirect,url_for
+from flask import flash, render_template, request, redirect, url_for
 from . import auth
 from ..models import User
 from .forms import RegistrationForm, LoginForm
 from .. import db
-from flask_login import login_user, logout_user,login_required
+from flask_login import login_user, logout_user, login_required
 from ..email import mail_message
 
 
-@auth.route('/register',methods = ["GET","POST"])
+@auth.route('/register', methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email = form.email.data,
-                    username = form.username.data,
-                    password = form.password.data)
+        user = User(email=form.email.data,
+                    username=form.username.data,
+                    password=form.password.data)
 
         # add user to the database
 
@@ -22,14 +22,16 @@ def register():
 
         flash('You have successfully registered. You may now login!')
 
-        mail_message("Welcome to Twing","email/welcome_user",user.email,user=user)
+        mail_message("Welcome to Twing", "email/welcome_user",
+                     user.email, user=user)
 
         title = "New Account"
         return redirect(url_for('auth.login'))
 
-    return render_template('auth/register.html',registration_form = form)
+    return render_template('auth/register.html', registration_form=form)
 
-@auth.route('/login', methods = ['GET', 'POST'])
+
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     """
         Handle requests to the /login route
@@ -51,12 +53,10 @@ def login():
             # redirect to the admin dashboard page after login
 
             # redirect to the appropriate dashboard page
-            if user.is_admin:
-                return redirect(url_for('main.admin_dashboard'))
-            else:
-                # return redirect(url_for('main.dashboard'))
 
-                return redirect(request.args.get('next') or url_for('main.index'))
+            # return redirect(url_for('main.dashboard'))
+
+            return redirect(request.args.get('next') or url_for('main.index'))
 
         # when login details are incorrect
 
@@ -66,7 +66,7 @@ def login():
 
     # load login template
 
-    return render_template('auth/login.html',login_form = login_form,title=title)
+    return render_template('auth/login.html', login_form=login_form, title=title)
 
 
 @auth.route('/logout')
